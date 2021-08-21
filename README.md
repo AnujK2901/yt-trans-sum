@@ -1,13 +1,16 @@
 # YouTube Transcript Summarizer: Python Package
-### Python Package for using our YouTube Video Transcript Summarizer. This repository makes GET requests to our Flask back-end server API at `/summarize/` endpoint.
-#### More details about this backend can be read at our [back-end repository](https://github.com/AnujK2901/yt-sum-flask).
-**YouTube Video Transcript Summarization using PIP:** Yes. You heard it right! This package is avaialble on PIP. Just go through this README file to know can you integrate it in your project.
-When ever you make a call to the function of our package, it sends API call to our Flask server, and then the server responds back with the summarized text response. Then you can further display the received result to the user.\
-As we make API calls to our back-end, this package needs an internet connection to received summarized transcript using `requests`.
+## This package is available on [GitHub Here](https://github.com/AnujK2901/yt-trans-sum).
+
+### This Package makes GET requests to our Flask Back-end server API at `/summarize/` endpoint for summarizing Transcripts. You can use it by installing over [PIP](https://pypi.org/project/yt-trans-sum/) !
+#### More details about our backend can be read at our [back-end repository here](https://github.com/AnujK2901/yt-sum-flask).
+
+**YouTube Video Transcript Summarization using PIP:** Yes. You heard it right! This package is available on [PyPi](https://pypi.org/project/yt-trans-sum/). Just read below to know how can you integrate it in your own project.
+When ever you invoke the function of our package, it sends API call to our Flask server, and then the server responds back with the summarized text response. Then you can further display the received result to the user.\
+As we make API calls to our back-end, this package needs an internet connection to received summarized transcript using `requests` library.
 
 ##### Requirements
-* `Python` `>=3.6` (Use as latest as possible version for more performance.)
-* `requests` `>=2.25.1` (Makes for API calls to our server)
+* `Python` `>=3.5` (Use as latest version as possible for more performance.): (Users below 3.6 can still run it, but might face some errors.)
+* `requests` `>=2.25.1` (Used to make API calls to our server)
 
 ![](/readme_images/image_cover_p.png)
 
@@ -18,26 +21,26 @@ Closed captions are the text derived from the video which are intended for addin
 
 ## Aim
 This repository is part of our project, in which there is a back-end server using Flask Framework. The backend has also a browser based summarizer, but the package available in this repository depict how server-client server makes efficient use of our code!\
-When you install the package, and then invoke the function, it makes request only, and the back-end summarizes the transcript, and sends the response back in `JSON Format`.\
-This package returns a `tuple` which has a summary and some insights about your requests. Read below for more details
+When you install the package, and then invoke the function, it *makes request only*, and the *back-end summarizes the transcript*, and *sends the response back in `JSON Format`*.\
+This package returns a `tuple` which has a summary and a dictionary storing some insights about your request. Read below for more details.
 
 ### Installation and Usage
-You can go to your terminal and make sure that `pip` is installed. Then, simply type:
-```
+You can go to your terminal and before you start, make sure that `pip` is installed. Then, simply type:
+```python
 pip install yt_trans_sum
 ```
 Now, you can import the package like this:
-```
+```python
 from yt_trans_sum import YouTubeTranscriptSummarizer
 
 if __name__ == "__main__":
-    # Simplest Call
+    # Simplest Call Example
     my_summary, my_summary_insights = YouTubeTranscriptSummarizer().get_by_url('https://www.youtube.com/watch?v=zhUgaKb0s5A')
     print("My Summary:", my_summary)
     print("My Summary Insights: ", my_summary_insights)
 ```
-Here, 'my_summary_insights` is a dictionary with key-value pairs of your insights. Below snippet can help you understand the values inside this dictionary.
-```
+Here, 'my_summary_insights` is a dictionary with key-value pairs with insight of your request. Below snippet can help you understand the values inside this dictionary.
+```python
 # There are 4 values inside this dictionary for now. The snippet is self explanatory.
 print("Characters in Transcript:", my_summary_insights['length_original'])
 print("Sentences in Transcript:", my_summary_insights['sentence_original'])
@@ -46,18 +49,18 @@ print("Sentences in Transcript:", my_summary_insights['sentence_summary'])
 ```
 
 ### More Examples of Usage
-1. Print logs while we request the summary
-```
+1. Print logs while we request the summary. While `debug_logs` is True, the package prints the current status of the request as well.
+```python
 from yt_trans_sum import YouTubeTranscriptSummarizer
 
 if __name__ == "__main__":
-    # Debug Logs True
+    # Debug Logs turned on.
     my_summary, my_summary_insights = YouTubeTranscriptSummarizer(debug_logs=True).get_by_url('https://www.youtube.com/watch?v=zhUgaKb0s5A')
     print("My Summary:", my_summary)
     print("My Summary Insights: ", my_summary_insights)
 ```
-The backend requires video id, algorithm and a percentage to summarize the transcript.
-* * **`id`** : Video ID of the YouTube Video. Each video has its own unique ID in its URL.\
+Since the backend requires `video id`, `algorithm` and a `percentage` to summarize the transcript., this package also takes these inputs.
+* **`id`** : Video ID of the YouTube Video. Each video has its own unique ID in its URL.\
   For example, *9No-FiEInLA* is the Video ID in *https​://www​.youtube​.com/watch?v=9No-FiEInLA.*.
 * **`choice`** : Algorithm Choice for the summarizing the Transcript. There are only six accepted values in this variable.\
   These choices are written along with algorithm names as follows:
@@ -68,25 +71,25 @@ The backend requires video id, algorithm and a percentage to summarize the trans
     * `sumy-luhn-sum` : Luhn Algorithm Based using Sumy.
     * `sumy-text-rank-sum` : Text Rank Algorithm Based using Sumy.
 * **`percent`** : The percentage is used to present the summary in approx. `X% lines` of the available transcript. Values between 20 to 30 give better results.
-**NOTE:** By default, Algorithm selected is gensim-sum and percentage is 20. You can these values from below examples.
+**NOTE:** By default, Algorithm selected is `gensim-sum` and percentage is `20`. You can change these values like below.
 
 2. Change percentage and algorithm for the summary request:
-```
+```python
 from yt_trans_sum import YouTubeTranscriptSummarizer
 
 if __name__ == "__main__":
     # Full control of arguments
-    my_summary, my_summary_insights = YouTubeTranscriptSummarizer().get_by_url(video_url='https://www.youtube.com/watch?v=zhUgaKb0s5A', percent=10, choice='sumy-lsa-sum'
+    my_summary, my_summary_insights = YouTubeTranscriptSummarizer().get_by_url(video_url='https://www.youtube.com/watch?v=zhUgaKb0s5A', percent=10, choice='sumy-lsa-sum')
     print("My Summary:", my_summary)
     print("My Summary Insights: ", my_summary_insights)
 ```
 3. Summarization request by using video ID instead of video URL
-```
+```python
 from yt_trans_sum import YouTubeTranscriptSummarizer
 
 if __name__ == "__main__":
     # get_by_id() is called instead of get_by_url()
-    my_summary, my_summary_insights = YouTubeTranscriptSummarizer().get_by_id(video_id='zhUgaKb0s5A', percent=10, choice='umy-lsa-sum'
+    my_summary, my_summary_insights = YouTubeTranscriptSummarizer().get_by_id(video_id='zhUgaKb0s5A', percent=10, choice='sumy-lsa-sum')
     print("My Summary:", my_summary)
     print("My Summary Insights: ", my_summary_insights)
 ```

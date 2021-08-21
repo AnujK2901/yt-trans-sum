@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="yt_trans_sum",
-    version="1.0.0",
+    version="1.0.1",
     author="Anuj Kumar",
     author_email="anujkumar29012000@gmail.com",
     description="A small light-weight package to summarize transcript of an eligible YouTube Video. The video should "
@@ -23,7 +23,7 @@ setuptools.setup(
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
-    python_requires=">=3.6",
+    python_requires=">=3.5",
     install_requires=[
         'requests',
     ],
