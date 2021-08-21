@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="yt_trans_sum",
-    version="1.0.1",
+    version="1.0.2",
     author="Anuj Kumar",
     author_email="anujkumar29012000@gmail.com",
     description="A small light-weight package to summarize transcript of an eligible YouTube Video. The video should "

@@ -5,11 +5,11 @@
 #### More details about our backend can be read at our [back-end repository here](https://github.com/AnujK2901/yt-sum-flask).
 
 **YouTube Video Transcript Summarization using PIP:** Yes. You heard it right! This package is available on [PyPi](https://pypi.org/project/yt-trans-sum/). Just read below to know how can you integrate it in your own project.
-When ever you invoke the function of our package, it sends API call to our Flask server, and then the server responds back with the summarized text response. Then you can further display the received result to the user.\
+When ever you invoke the function of our package, it sends API calls to our Flask server, and then the server responds back with the summarized text response. Then you can further display the received result to the user.\
 As we make API calls to our back-end, this package needs an internet connection to received summarized transcript using `requests` library.
 
 ##### Requirements
-* `Python` `>=3.5` (Use as latest version as possible for more performance.): (Users below 3.6 can still run it, but might face some errors.)
+* `Python` `>=3.5` (Use as latest version as possible for more performance. Users below 3.5 can still run it, but might face some errors since the package was not tested below 3.5)
 * `requests` `>=2.25.1` (Used to make API calls to our server)
 
 ![](/readme_images/image_cover_p.png)
@@ -17,7 +17,7 @@ As we make API calls to our back-end, this package needs an internet connection 
 *Pre-requisite Knowledge:* YouTube is an American free to use online video sharing and social media platform launched in February 2005. It is currently one of the biggest video platforms where its users watch more than 1 billion hours of videos every day.\
 Closed captions are the text derived from the video which are intended for adding more details (such as dialogues, speech translation, non-speech elements) for the viewer. They are widely used to understand video without understanding its audio.
 
-*Use case Scenario:* YouTube has very large number of videos which has transcripts. Summarization would be especially helpful in the cases where videos are longer in length and different parts might have varying importance. In this sense, Summarization of the video might be useful in saving the viewer’s time. It will help in improving user productivity since they will focus only on the important text spoken in video. 
+*Use case Scenario:* YouTube has very large number of videos which has transcripts. Summarization would be especially helpful in the cases where videos are longer and different parts might have varying importance. In this sense, Summarization of the video might be useful in saving the viewer’s time. It will help in improving user productivity since they will focus only on the important text spoken in video. 
 
 ## Aim
 This repository is part of our project, in which there is a back-end server using Flask Framework. The backend has also a browser based summarizer, but the package available in this repository depict how server-client server makes efficient use of our code!\
@@ -25,7 +25,7 @@ When you install the package, and then invoke the function, it *makes request on
 This package returns a `tuple` which has a summary and a dictionary storing some insights about your request. Read below for more details.
 
 ### Installation and Usage
-You can go to your terminal and before you start, make sure that `pip` is installed. Then, simply type:
+You can go to your terminal, and before you start, make sure that `pip` is installed. Then, simply type:
 ```python
 pip install yt_trans_sum
 ```
@@ -70,7 +70,7 @@ Since the backend requires `video id`, `algorithm` and a `percentage` to summari
     * `sumy-lsa-sum` : Latent Semantic Analysis Based using Sumy.
     * `sumy-luhn-sum` : Luhn Algorithm Based using Sumy.
     * `sumy-text-rank-sum` : Text Rank Algorithm Based using Sumy.
-* **`percent`** : The percentage is used to present the summary in approx. `X% lines` of the available transcript. Values between 20 to 30 give better results.
+* **`percent`** : The percentage is used to present the summary in approx. `X% lines` of the available transcript. Values between 20 and 30 give better results.
 **NOTE:** By default, Algorithm selected is `gensim-sum` and percentage is `20`. You can change these values like below.
 
 2. Change percentage and algorithm for the summary request:
