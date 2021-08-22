@@ -115,8 +115,10 @@ class YouTubeTranscriptSummarizer:
         choice = self._choice
 
         # Characters for bold font : We have to start and end with these characters
-        bold_start = '\033[1m'
-        bold_end = '\033[0m'
+        bold_start = ''
+        bold_end = ''
+        # bold_start = '\033[1m'
+        # bold_end = '\033[0m'
 
         # Making a new request to our server.
         if video_id:
@@ -245,7 +247,7 @@ class SummarizationFailureErrorException(YouTubeTranscriptSummarizeError):
 
 class AlgorithmArgumentErrorException(YouTubeTranscriptSummarizeError):
     def __init__(self, choice):
-        self.message = "Entered Choice is: '" + choice + "'. But, we accept these values only: " + \
+        self.message = "Your Choice is: '" + choice + "'. But, we accept these values only: " + \
                        '["gensim-sum", "spacy-sum", "nltk-sum", "sumy-lsa-sum", "sumy-luhn-sum", "sumy-text-rank-sum"]' \
                        + "\nRead our documentation for more details if you are choosing algorithm manually."
         super().__init__(self.message)
