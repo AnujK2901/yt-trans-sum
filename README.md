@@ -47,7 +47,7 @@ Here, 'my_summary_insights` is a dictionary with key-value pairs with insight of
 print("Characters in Transcript:", my_summary_insights['length_original'])
 print("Sentences in Transcript:", my_summary_insights['sentence_original'])
 print("Characters in Summary:", my_summary_insights['length_summary'])
-print("Sentences in Transcript:", my_summary_insights['sentence_summary'])
+print("Sentences in Summary:", my_summary_insights['sentence_summary'])
 ```
 
 ### More Examples of Usage
